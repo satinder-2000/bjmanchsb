@@ -22,8 +22,11 @@ public class UserService {
 	private UserRepository userRepository;
 	
 	public boolean registerUser(UserDto userDto) {
+		//Firstly, sort out the User profile File
 		User user = new User();
 		Access access = new Access();
+		access.setEmail(userDto.getEmail());
+		//access.s
 		
 		access =accessRepository.save(access);
 		LOGGER.info("Access created successfully !!");
