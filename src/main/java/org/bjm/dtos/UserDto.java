@@ -24,6 +24,8 @@ public class UserDto {
     @Size(min = 2, max = 75, message = "Invalid First Name")
     private String lastName;
     @NotNull
+    private String gender;
+    @NotNull
     @Pattern(regexp = "dd/dd/dddd")
     private String dob;
     @Pattern(regexp = "dd/dd/dddd")
@@ -67,8 +69,17 @@ public class UserDto {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+    
 
-    public String getDob() {
+    public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getDob() {
         return dob;
     }
 

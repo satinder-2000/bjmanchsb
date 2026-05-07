@@ -21,6 +21,7 @@ public class User  {
     private String email;
     private String firstName;
     private String lastName;
+    private String gender;
     private LocalDate dob;
     private String mobile;
     private String phone;
@@ -53,6 +54,13 @@ public class User  {
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+	
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 	public LocalDate getDob() {
 		return dob;

@@ -18,8 +18,7 @@ public class HomeController {
     
     @GetMapping(path = "/register")
     public String registerUser(){
-        
-        return "register/userRegister";
+    	return "redirect:registerUser";
     }
     
     

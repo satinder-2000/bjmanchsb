@@ -37,7 +37,7 @@ public class ReferenceDataService {
     	
     	List<StateDto> toReturn = new ArrayList<>();
     	List<State> states = stateRepository.findAll();
-    	LOGGER.info(String.format("Count of States is {d}", states.size()));
+    	LOGGER.info(String.format("Count of States is %d", states.size()));
     	states.forEach(s -> {
     		StateDto stateDto = new StateDto(s.getCode(), s.getName());
     		toReturn.add(stateDto);
