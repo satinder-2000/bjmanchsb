@@ -21,6 +21,11 @@ public class HomeController {
     	return "redirect:registerUser";
     }
     
+    @GetMapping(path = "/select")
+    public String select(){
+    	return "select";
+    }
+    
     
     
 }

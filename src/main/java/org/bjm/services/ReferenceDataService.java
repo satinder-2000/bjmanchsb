@@ -47,32 +47,24 @@ public class ReferenceDataService {
     }
     
 	public List<LokSabhaDto> getLokSabhasForState(String stateCode) {
-
-		List<LokSabhaDto> toReturn = new ArrayList<>();
-		List<LokSabha> lokSabhas = lokSabhaRepository.findByStateCode(stateCode);
-		LOGGER.info(String.format("Count of lokSabhas is {d}", lokSabhas.size()));
-		lokSabhas.forEach(ls -> {
-			LokSabhaDto lokSabhaDto = new LokSabhaDto(ls.getStateCode(), ls.getConstituency());
-			toReturn.add(lokSabhaDto);
-		});
+		List<LokSabhaDto> toReturn = new ArrayList();
+		List<LokSabha> sourceList = lokSabhaRepository.findByStateCode(stateCode);
+		for (LokSabha ls: sourceList) {
+			LokSabhaDto lsDto= new LokSabhaDto(ls.getStateCode(),ls.getConstituency()); 
+			toReturn.add(lsDto);
+		}
+		LOGGER.info(String.format("Count of lokSabhas for %s is %d",stateCode,toReturn.size()));
 		return toReturn;
-
 	}
 	
 	public List<VidhanSabhaDto> getVidhanSabhasForState(String stateCode) {
-
-		List<VidhanSabhaDto> toReturn = new ArrayList<>();
-		List<VidhanSabha> vidhanSabhas = vidhanSabhaRepository.findByStateCode(stateCode);
-		LOGGER.info(String.format("Count of vidhanSabhas is {d}", vidhanSabhas.size()));
-		vidhanSabhas.forEach(vs -> {
-			VidhanSabhaDto vidhanSabhaDto = new VidhanSabhaDto(vs.getStateCode(), vs.getConstituency());
-			toReturn.add(vidhanSabhaDto);
-		});
+		List<VidhanSabhaDto> toReturn = new ArrayList();
+		List<VidhanSabha> sourceList = vidhanSabhaRepository.findByStateCode(stateCode);
+		for (VidhanSabha vs: sourceList) {
+			VidhanSabhaDto vsDto= new VidhanSabhaDto(vs.getStateCode(),vs.getConstituency()); 
+			toReturn.add(vsDto);
+		}
+		LOGGER.info(String.format("Count of vidhanSabhas for %s is %d",stateCode,toReturn.size()));
 		return toReturn;
-
 	}
-    
-    
-        
-    
 }

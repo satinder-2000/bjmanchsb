@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <!-- link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css"/-->
+    </head>
+    <body>
+
+    <body>
+
+        <div th:fragment="head">
+        <!-- Navbar -->
+		<div class="w3-bar w3-black">
+			<div class="w3-bar-item">
+				<img th:src="@{images/Logo40White.png}"
+					width="25px" height="25px" alt="Logo"/>
+			</div>
+			<a href="#" class="w3-bar-item w3-button" th:href="@{/registerUser}">Register</a>
+			<div class="w3-bar-item w3-right">Profile</div>
+		</div>
+	</div>
+
+    </body>
+</html>

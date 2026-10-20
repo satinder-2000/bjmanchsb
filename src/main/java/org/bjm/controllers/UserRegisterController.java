@@ -6,20 +6,18 @@ import org.bjm.dtos.UserDto;
 import org.bjm.services.ReferenceDataService;
 import org.bjm.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-
 import jakarta.validation.Valid;
 
 /**
  *
  * @author user
  */
-@RestController
+@Controller
 public class UserRegisterController {
     
     private static final Logger LOGGER = LogManager.getLogger();
@@ -62,6 +60,8 @@ public class UserRegisterController {
 		LOGGER.info("User Registered Successfully!!");
 		return "register/userRegisterSuccess";
 	}
+    
+    
     
     
     

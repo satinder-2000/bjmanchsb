@@ -1,0 +1,20 @@
+
+                console.log("Lok Sabha constituencies:");
+                console.log(result);
+
+                // Populate the Lok Sabha dropdown here
+                var $select = $('#lokSabha');
+ 
+				//request the JSON data and parse into the select element
+				$.getJSON('lokSabha.JSON', function(result){
+ 
+  				//clear the current content of the select
+  				$select.html('');
+ 
+  				//iterate over the data and append a select option
+  				$.each(data.lokSabha, function(stateCode, constituency){
+  				    $select.append('<option id="' + constituency + '">' + constituency + '</option>');
+  				});
+				}); console.log("Lok Sabha constituencies:");
+                console.log(result); console.log("Lok Sabha constituencies:");
+                console.log(result);

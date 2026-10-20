@@ -26,11 +26,11 @@ public class UserDto {
     @NotNull
     private String gender;
     @NotNull
-    @Pattern(regexp = "dd/dd/dddd")
+    @Pattern(regexp = "dd/dd/dddd", message="Invalid D.O.B")
     private String dob;
-    @Pattern(regexp = "dd/dd/dddd")
+    @Pattern(regexp = "^0([1-6][0-9]{8,10}|7[0-9]{9})$", message="Invalid Mobile Number")
     private String mobile;
-    @Pattern(regexp = "dd/dd/dddd")
+    @Pattern(regexp = "^0([1-6][0-9]{8,10}|7[0-9]{9})$", message="Invalid Phone Number")
     private String phone;
     @Pattern(regexp = "xx")
     private String stateCode;

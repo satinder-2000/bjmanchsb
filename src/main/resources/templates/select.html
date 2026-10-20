@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Select Demo</title>
+<script type="text/javascript">
+	function doda(){
+		val = document.getElementById("slt");
+		document.getElementById("demo").innerHTML=val.value;
+	}
+</script>
+</head>
+<body>
+<select id="slt" onChange="doda()">
+	<option value="OptionA">OptionA</option>
+	<option value="OptionB">OptionB</option>
+	<option value="OptionC">OptionC</option>
+</select>
+
+<p id="demo"></p>
+
+</body>
+</html>

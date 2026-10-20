@@ -4,11 +4,15 @@ import java.util.List;
 
 import org.bjm.entities.LokSabha;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LokSabhaRepository extends JpaRepository<LokSabha, Integer> {
 	
 	public List<LokSabha> findByStateCode(String stateCode);
+	
+	//@Query("select ls.constituency from LokSabha ls where ls.stateCode=?1")
+	//public List<String> findConstituency(String stateCode);
 
 }
