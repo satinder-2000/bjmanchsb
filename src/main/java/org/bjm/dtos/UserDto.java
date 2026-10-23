@@ -1,43 +1,65 @@
 package org.bjm.dtos;
 
-import jakarta.servlet.http.Part;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+
+import java.io.Serializable;
 import java.util.List;
+
+import org.bjm.utils.RequireMobileOrPhone;
+import org.springframework.web.multipart.MultipartFile;
 
 
 /**
  *
  * @author user
  */
-public class UserDto {
+@RequireMobileOrPhone
+public class UserDto implements Serializable {
     
-    @NotNull
+	@NotBlank(message = "Email is required")
     @Email(message = "Invalid Email")
     private String email;
-    @NotNull
+	
+	@NotBlank(message = "First Name is required")
     @Size(min = 2, max = 75, message = "Invalid First Name")
     private String firstName;
-    @NotNull
+    
+	@NotBlank(message = "Last Name is required")
     @Size(min = 2, max = 75, message = "Invalid First Name")
     private String lastName;
-    @NotNull
+    
+	@NotBlank(message = "Gender is required")
+	@Pattern(regexp="Male|Female", message="Invalid Gender")
     private String gender;
-    @NotNull
-    @Pattern(regexp = "dd/dd/dddd", message="Invalid D.O.B")
+    
+	@NotBlank(message = "Date of birth is required")
+    @Pattern(
+        regexp = "^\\d{2}/\\d{2}/\\d{4}$",
+        message = "Date must be in dd/MM/yyyy format"
+    )
     private String dob;
-    @Pattern(regexp = "^0([1-6][0-9]{8,10}|7[0-9]{9})$", message="Invalid Mobile Number")
-    private String mobile;
-    @Pattern(regexp = "^0([1-6][0-9]{8,10}|7[0-9]{9})$", message="Invalid Phone Number")
-    private String phone;
-    @Pattern(regexp = "xx")
+    
+	//Validation of mobile and phone moved to Controller because only one number is required
+	
+	@Pattern(regexp="^0([1-6][0-9]{8,10}|7[0-9]{9})$", message="Invalid Mobile Number")
+	private String mobile;
+	@Pattern(regexp="^0([1-6][0-9]{8,10}|7[0-9]{9})$", message="Invalid Phone Number")
+	private String phone;
+	
+	@NotBlank(message = "State of residence is required")
+    @Pattern(regexp = "^[A-Z]{2}$", message = "Invalid State")
     private String stateCode;
     private String stateName;
+    @NotBlank(message = "Lok Sabha Constituency is required")
+    @Size(min = 4, max = 100, message = "Invalid Lok Sabha Constituency")
     private String lokSabhaConstituency;
+    @NotBlank(message = "Vidhan Sabha Constituency is required")
+    @Size(min = 3, max = 100, message = "Invalid Vidhan Sabha Constituency")
     private String vidhanSabhaConstituency;
-    private Part profileFile;
+    private MultipartFile profileFile;
     private String profileImageType;
     private byte[] profileImage;
     
@@ -84,7 +106,7 @@ public class UserDto {
     }
 
     public void setDob(String dob) {
-        this.dob = dob;
+    	this.dob = dob;
     }
 
     public String getMobile() {
@@ -130,20 +152,20 @@ public class UserDto {
     public String getVidhanSabhaConstituency() {
         return vidhanSabhaConstituency;
     }
-
+    
     public void setVidhanSabhaConstituency(String vidhanSabhaConstituency) {
         this.vidhanSabhaConstituency = vidhanSabhaConstituency;
     }
 
-    public Part getProfileFile() {
-        return profileFile;
-    }
+    public MultipartFile getProfileFile() {
+		return profileFile;
+	}
 
-    public void setProfileFile(Part profileFile) {
-        this.profileFile = profileFile;
-    }
+	public void setProfileFile(MultipartFile profileFile) {
+		this.profileFile = profileFile;
+	}
 
-    public String getProfileImageType() {
+	public String getProfileImageType() {
         return profileImageType;
     }
 

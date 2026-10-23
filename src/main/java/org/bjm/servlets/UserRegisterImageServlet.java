@@ -30,7 +30,7 @@ public class UserRegisterImageServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session=request.getSession();
-        ImageVO userImageVO=(ImageVO)session.getAttribute(BjmConstants.USER_IMAGE);
+        ImageVO userImageVO=(ImageVO)session.getAttribute(BjmConstants.USER_PROFILE_IMAGE);
         response.setContentType("image/"+userImageVO.getImgType());
         System.out.println(" userImageVO.getImgType() "+userImageVO.getImgType());
         response.getOutputStream().write(userImageVO.getImage());

@@ -98,6 +98,10 @@ $(document).ready(function () {
     });
 
 });
+
+$("#dob").datepicker({
+                dateFormat: "dd/mm/yy"
+            });
  				
 		</script>
 	</head>
@@ -124,77 +128,111 @@ $(document).ready(function () {
                 <!-- Central Part -->
              	<div class="w3-col m8">
                 <h2>User Registration</h2>
-                <form th:action="@{/userRegister}" method="post" th:object=${userDto}>
+                <form th:action="@{/registerUser}" method="post" enctype="multipart/form-data" th:object=${userDto}>
                 <table class="w3-table">
                 <tr>
                 <td><label for="email">Email:</label></td>
-                <td><input id="email" type="text" th:field="*{email}" placeholder="Email"/></td>
+                <td><input id="email" type="text" th:field="*{email}" placeholder="Email"/>
+                	<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color:red;font-size:.8em"></span>
+                </td>
                 </tr>
                 <tr>
                 <td><label for="firstName">First Name:</label></td>
-                <td><input id="firstName" type="text" th:field="*{firstName}" placeholder="First Name"/></td>
+                <td><input id="firstName" type="text" th:field="*{firstName}" placeholder="First Name"/>
+                <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" style="color:red;font-size:.8em"></span>
+                </td>
                 </tr>
                 
                 <tr>
                 <td><label for="lastName">Last Name:</label></td>
-                <td><input id="lastName" type="text" th:field="*{lastName}" placeholder="Last Name"/></td>
+                <td><input id="lastName" type="text" th:field="*{lastName}" placeholder="Last Name"/>
+                <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" style="color:red;font-size:.8em"></span>
+                </td>
                 </tr>
                 
                 <tr>
                 <td><label for="gender">Gender:</label></td>
                 <td>
                 <select id="gender" th:field="*{gender}">
-					<option th:value="'M'" th:text="Male"></option>
-					<option th:value="'F'" th:text="Female"></option>
+                	<option value="&nbsp;">Select One</option>
+					<option th:value="'Male'" th:text="Male"></option>
+					<option th:value="'Female'" th:text="Female"></option>
 				</select>
+				<span th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" style="color:red;font-size:.8em"></span>
 				</td>
                 </tr>
                 
                 <tr>
                 <td><label for="dob">Date of Birth:</label></td>
-                <td><input id="dob" type="date" th:field="*{dob}" placeholder="DD/MM/YYYY"/></td>
+                <td><input id="dob" type="text" th:field="*{dob}" placeholder="DD/MM/YYYY"/>
+                <span th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}" style="color:red;font-size:.8em"></span>
+                </td>
                 </tr>
                 
                 <tr>
                 <td><label for="mobile">Mobile Number:</label></td>
-                <td><input id="mobile" type="tell" th:field="*{mobile}" placeholder="Valid Mobile Number"/></td>
+                <td><input id="mobile" type="text" th:field="*{mobile}" placeholder="Valid Mobile Number"/>
+                <span th:if="${#fields.hasErrors('mobile')}" th:errors="*{mobile}" style="color:red;font-size:.8em"></span>
+                </td>
+                </tr>
+                
+                <tr>
+                <td><span>OR</span></td>
+                <td>&nbsp;</td>
                 </tr>
                 
                 <tr>
                 <td><label for="phone">Phone/Land line Number:</label></td>
-                <td><input id="phone" type="tell" th:field="*{phone}" placeholder="Valid Phone/Landline Number"/></td>
+                <td><input id="phone" type="text" th:field="*{phone}" placeholder="Valid Phone/Landline Number"/>
+                	<span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" style="color:red;font-size:.8em"></span>
+                </td>
+                </tr>
+                
+                 <tr>
+                <td><label for="profile">Profile File:</label></td>
+                <td><input id="profile" type="file" th:field="*{profileFile}"/><br/>
+                	<span style="font-size:.8em">The profile file size must be &lt;500kb</span>
+                </td>
                 </tr>
                 
                 <tr>
                 <td><label for="stateCd">State:</label></td>
                 <td><select id="stateCd" th:field="*{stateCode}">
-                	<option value="NA">Select One</option>
+                	<option value="&nbsp;">Select One</option>
                 	<option th:each="stateDto : *{stateDtos}" th:value="${stateDto.code}" th:text="${stateDto.name}"></option>
                 </select>
+                <span th:if="${#fields.hasErrors('stateCode')}" th:errors="*{stateCode}" style="color:red;font-size:.8em"></span>
                 </td>
                 </tr>
                 
                 <tr>
                 <td><label for="lokSabha">Lok Sabha:</label></td>
                 <td><select id="lokSabha" th:field="*{lokSabhaConstituency}">
-                	<option value="NA">Select One</option>
+                	<option value="&nbsp;">Select One</option>
                 </select>
+                <span th:if="${#fields.hasErrors('lokSabhaConstituency')}" th:errors="*{lokSabhaConstituency}" style="color:red;font-size:.8em"></span>
                 </td>
                 </tr>
                 
                 <tr>
                 <td><label for="vidhanSabha">Vidhan Sabha:</label></td>
                 <td><select id="vidhanSabha" th:field="*{vidhanSabhaConstituency}">
-                	<option value="NA">Select One</option>
+                	<option value="&nbsp;">Select One</option>
                 </select>
+                <span th:if="${#fields.hasErrors('vidhanSabhaConstituency')}" th:errors="*{vidhanSabhaConstituency}" style="color:red;font-size:.8em"></span>
+                </td>
+                </tr>
+                <tr>
+                <td>&nbsp;</td>
+                <td>
+                <button type="submit">Continue</button>
                 </td>
                 </tr>
                 
                 </table>
 				</form>
 				</div>
-				<p id="demo"></p>
-                <!-- End Central Part -->
+				<!-- End Central Part -->
                 <!-- Right Part -->
              <div class="w3-col m2">
              Right Column

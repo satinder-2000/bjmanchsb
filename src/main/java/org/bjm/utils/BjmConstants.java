@@ -13,6 +13,6 @@ public interface BjmConstants {
     public final String FORUM_COMMENTER_IMAGE_MAP="forumCommenterImageMap";
     public final String SURVEY_FROM_FORUM_VOTER_IMAGE_MAP="surveyFromForumVoterImageMap";
     public final String BLOG_COMMENTER_IMAGE_MAP="blogCommenterImageMap";
-    public final String USER_IMAGE="userImage";
+    public final String USER_PROFILE_IMAGE="userProfileImage";
     
 }
