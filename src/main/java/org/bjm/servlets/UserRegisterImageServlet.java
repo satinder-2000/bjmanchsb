@@ -1,7 +1,6 @@
 package org.bjm.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -18,7 +17,9 @@ import org.bjm.utils.ImageVO;
 @WebServlet(name = "UserRegisterImageServlet", urlPatterns = {"/UserRegisterImageServlet"})
 public class UserRegisterImageServlet extends HttpServlet {
 
-    /**
+    private static final long serialVersionUID = 1L;
+
+	/**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
@@ -32,10 +33,9 @@ public class UserRegisterImageServlet extends HttpServlet {
         HttpSession session=request.getSession();
         ImageVO userImageVO=(ImageVO)session.getAttribute(BjmConstants.USER_PROFILE_IMAGE);
         response.setContentType("image/"+userImageVO.getImgType());
-        System.out.println(" userImageVO.getImgType() "+userImageVO.getImgType());
+        response.setContentLength(userImageVO.getImage().length);
         response.getOutputStream().write(userImageVO.getImage());
-        System.out.println("userImageVO.getImage() bytes: "+userImageVO.getImage().length);
-        }
+    }
     
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

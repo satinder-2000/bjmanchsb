@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www/thymeleaf.org">
+    <head>
+        <title>User Register</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/6/w3.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<style>
+		html, body, h1, h2, h3, h4, h5 {
+			font-family: "Open Sans", sans-serif
+		}
+		</style>
+		<script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+			</head>
+    <body>
+    	<!-- Navigation /header -->
+    	<div  class="w3-container w3-round-large">
+    		<div class="w3-panel">
+    			<div th:insert="~{fragments/header::head}" ></th:insert>
+    			</div>
+    		</div>
+         </div>
+        <!-- Navigation /header -->
+
+
+        <!-- Central Part / Left Content and Right stuff -->
+        <div class="w3-container w3-content" style="max-width:1400px;margin-top:10px">    
+            <!-- The Grid -->
+            <div class="w3-row">
+                <!-- Left Column -->
+                <div class="w3-col m2">
+                Left Column
+                </div>
+                <!-- End Left Column -->
+                <!-- Central Part -->
+             	<div class="w3-col m8">
+                <h2>User Home Page</h2>
+                </div>
+				<!-- End Central Part -->
+                <!-- Right Part -->
+             <div class="w3-col m2">
+             Right Column
+             </div>
+                <!-- End Right Part -->
+                
+                
+             </div>
+
+        </div>
+        <br>
+
+        
+
+
+    </body>
+</html>

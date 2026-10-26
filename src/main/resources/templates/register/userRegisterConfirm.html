@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www/thymeleaf.org">
     <head>
-        <title>User Register</title>
+        <title>User Register Confirm</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/6/w3.css">
@@ -13,7 +13,9 @@
 			font-family: "Open Sans", sans-serif
 		}
 		</style>
-		</head>
+		<script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+
+	</head>
     <body>
     	<!-- Navigation /header -->
     	<div  class="w3-container w3-round-large">
@@ -35,18 +37,13 @@
                 </div>
                 <!-- End Left Column -->
                 <!-- Central Part -->
-             	<div class="w3-col m12">
-             	<div class="col-sm-3">
-                   <p class="text-center">
-                   		<img src="/UserRegisterImageServlet" width="100" style="border-radius: 50%;"/>
-                   </p>
-                </div>
+             	<div class="w3-col m8">
                 <h2>User Registration - Confirm</h2>
                 <form th:action="@{/registerUserConfirm}" method="post" enctype="multipart/form-data" th:object=${userDto}>
                 <table class="w3-table">
                 <tr>
                 <td><label for="email">Email:</label></td>
-                <td><span id="email" th:text="*{email}"></span>
+                <td><span id="email" th:text="*{email}" ></span>
                 </td>
                 </tr>
                 <tr>
@@ -63,7 +60,8 @@
                 
                 <tr>
                 <td><label for="gender">Gender:</label></td>
-                <td><span id="gender" th:text="*{gender}"></span>
+                <td>
+                <span id="gender" th:text="*{gender}"></span>
                 </td>
                 </tr>
                 
@@ -90,11 +88,15 @@
                 </td>
                 </tr>
                 
-                <!-- Display on Le --> 
+                <tr>
+                <td><label for="profile">Profile File:</label></td>
+                <td><img id="profile" th:src="@{/images/UserProfileImage}" width="50" height="50"></img>
+                </td>
+                </tr>
                 
                 <tr>
-                <td><label for="state">State:</label></td>
-                <td><span id="state" th:text="*{stateName}"></span>
+                <td><label for="stateName">State:</label></td>
+                <td><span id="stateName" th:text="*{stateName}"></span>
                 </td>
                 </tr>
                 
@@ -110,10 +112,16 @@
                 </td>
                 </tr>
                 <tr>
-                <td>&nbsp;</td>
                 <td>
-                <button type="submit">Submit</button>
-                </td>
+                <form th:action="@{/amendRegistration}" method="post">
+							<button type="submit">Amend Details</button>
+				</form>
+				</td>
+                <td>
+                <form th:action="@{/confirmRegistration}" method="post">
+							<button type="submit">Confirm Registration</button>
+				</form>
+				</td>
                 </tr>
                 
                 </table>

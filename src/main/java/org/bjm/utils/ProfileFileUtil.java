@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.multipart.MultipartFile;
 
-
+@Deprecated
 public class ProfileFileUtil {
 
 	private static final Logger LOGGER = LogManager.getLogger();
@@ -50,9 +50,9 @@ public class ProfileFileUtil {
 				try {
 					ImageIO.write(profileBufferedImage, logoFormat, baos);
 					baos.flush();
-					imgData = baos.toByteArray();
+					imgData = text.getBytes();
 					baos.close();
-					userDto.setProfileImageType(text +  logoFormat);
+					userDto.setProfileImageType(logoFormat);
 					userDto.setProfileImage(imgData);
 					LOGGER.info("Initials Logo text in userDto: " + text);
 					LOGGER.info("Initials Logo byte{} size in userDto: " + imgData.length);

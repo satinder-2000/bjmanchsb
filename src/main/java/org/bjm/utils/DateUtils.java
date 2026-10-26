@@ -3,6 +3,7 @@ package org.bjm.utils;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public final class DateUtils {
 
@@ -74,7 +75,8 @@ public final class DateUtils {
     }
     
     public static LocalDate parseDate(String date) {
-    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
-    	return LocalDate.parse(date, formatter);
+    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu", Locale.UK);
+    	LocalDate localDate= LocalDate.parse(date,formatter);
+    	return localDate;
     }
 }
