@@ -17,7 +17,7 @@ import jakarta.validation.Valid;
 public class LoginController {
 	
 	private LoginDto loginDto;
-	boolean isUserLoggedIn;
+	
 	
 	@Autowired
 	private AccessService accessService;
@@ -35,7 +35,7 @@ public class LoginController {
 		try {
 			boolean status=accessService.performLogin(loginDto.getEmail(), loginDto.getPassword());
 			if(status) {//successful login
-				session.setAttribute("isUserLoggedIn", true);
+				session.setAttribute("loggedInUser", loginDto.getEmail());
 			}
 			ModelAndView modelAndView = new ModelAndView("userHome");
 			modelAndView.addObject("loginDto", loginDto);

@@ -11,12 +11,16 @@ import org.bjm.entities.repositories.AccessRepository;
 import org.bjm.entities.repositories.UserRepository;
 import org.bjm.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
 	
 	private static final Logger LOGGER = LogManager.getLogger();
+	
+	@Value("${logoFormat}")
+    private String logoFormat;
 	
 	@Autowired
 	private AccessRepository accessRepository;
@@ -55,6 +59,34 @@ public class UserService {
 		user = userRepository.save(user);
 		LOGGER.info("User created successfully !!");
 		return true;
+	}
+	
+	public UserDto getUserByEmail(String email) {
+		User user=userRepository.findByEmail(email);
+		Access access = accessRepository.findByEmail(email);
+		UserDto userDto = new UserDto();
+		userDto.setEmail(user.getEmail());
+		userDto.setFirstName(user.getFirstName());
+		userDto.setLastName(user.getLastName());
+		userDto.setDob(DateUtils.parseString(user.getDob()));
+		userDto.setGender(user.getGender());
+		userDto.setMobile(user.getMobile());
+		userDto.setPhone(user.getPhone());
+		String profileFile=access.getProfileFile();
+		String profileFileType=null;
+		if (profileFile!=null) {
+			profileFileType=profileFile.substring(profileFile.lastIndexOf('.'));
+		}else {
+			profileFileType=logoFormat;
+		}
+		
+		userDto.setProfileImageType(profileFileType);
+		userDto.setProfileImage(access.getImage());
+		userDto.setStateCode(user.getStateCode());
+		userDto.setLokSabhaConstituency(user.getLokSabhaConstituency());
+		userDto.setVidhanSabhaConstituency(user.getVidhanSabhaConstituency());
+		return userDto;
+		
 	}
 	
 	

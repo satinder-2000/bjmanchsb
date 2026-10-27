@@ -79,4 +79,9 @@ public final class DateUtils {
     	LocalDate localDate= LocalDate.parse(date,formatter);
     	return localDate;
     }
+    
+    public static String parseString(LocalDate date) {
+    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu", Locale.UK);
+    	return formatter.format(date);
+    }
 }
